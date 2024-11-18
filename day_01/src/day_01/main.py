@@ -4,7 +4,18 @@ import warnings
 
 # from day_01.crew import Day01
 from crew import Day01Crew
-
+from crewai.cli.constants import ENV_VARS
+ENV_VARS.update(
+    {"ollama":
+      [{
+            "prompt": "Enter your OLLAMA API_BASE (press Enter to skip)",
+            "key_name": "API_BASE",
+        },
+        # {
+        #     "default": True,
+        #     "API_BASE": "http://localhost:11434",
+        # }
+    ]})
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 # This main file is intended to be a way for you to run your
