@@ -1,44 +1,45 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import SerperDevTool,ScrapeWebsiteTool
 
 @CrewBase
-class Day02():
-	"""Day02 crew"""
+class Day03:
+	"""Day03 crew"""
 
 	agents_config = 'config/agents.yaml'
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
-	def chuck_norris_joke_generator(self) -> Agent:
+	def researcher(self) -> Agent:
 		return Agent(
-			config=self.agents_config['chuck_norris_joke_generator'],
-			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
+			config=self.agents_config['researcher'],
+			tools=[SerperDevTool(), ScrapeWebsiteTool()], # Example of custom tool, loaded on the beginning of file
 			verbose=True
 		)
 
 	@agent
-	def chuck_norris_joke_picker(self) -> Agent:
+	def reporting_analyst(self) -> Agent:
 		return Agent(
-			config=self.agents_config['chuck_norris_joke_picker'],
+			config=self.agents_config['reporting_analyst'],
 			verbose=True
 		)
 
 	@task
-	def generate_joke_task(self) -> Task:
+	def research_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['generate_joke_task'],
+			config=self.tasks_config['research_task'],
 		)
 
 	@task
-	def pick_joke_task(self) -> Task:
+	def reporting_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['pick_joke_task'],
+			config=self.tasks_config['reporting_task'],
 			output_file='report.md'
 		)
 
 	@crew
 	def crew(self) -> Crew:
-		"""Creates the Day02 crew"""
+		"""Creates the Day03 crew"""
 		return Crew(
 			agents=self.agents, # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator
