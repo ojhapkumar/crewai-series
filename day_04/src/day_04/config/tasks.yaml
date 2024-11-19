@@ -1,9 +1,8 @@
 research_task:
   description: >
     Search News about {topic}
-    The current time is {date}
   expected_output: >
-    A list of news articles about {topic} with the title, url and snippet.
+    A list of news articles about {topic} with the title, url, image and snippet.
   agent: researcher
 
 reporting_task:

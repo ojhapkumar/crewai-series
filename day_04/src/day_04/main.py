@@ -28,8 +28,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'openai',
-        'date' : datetime.now().strftime('%Y-%m-%d')
+        'topic': 'ai agents'
     }
     Day03().crew().kickoff(inputs=inputs)
 

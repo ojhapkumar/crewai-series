@@ -1,7 +1,7 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool,ScrapeWebsiteTool
-
+from tools.custom_tool import CustomServerDevTool
 @CrewBase
 class Day03:
 	"""Day03 crew"""
@@ -13,7 +13,7 @@ class Day03:
 	def researcher(self) -> Agent:
 		return Agent(
 			config=self.agents_config['researcher'],
-			tools=[SerperDevTool(), ScrapeWebsiteTool()], # Example of custom tool, loaded on the beginning of file
+			tools=[CustomServerDevTool(), ScrapeWebsiteTool()], # Example of custom tool, loaded on the beginning of file
 			verbose=True
 		)
 
